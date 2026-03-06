@@ -1,0 +1,18 @@
+{
+  "name": "减脂系统",
+  "short_name": "减脂",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f0f23",
+  "theme_color": "#1a0a2e",
+  "description": "本地减脂系统：BMI/TDEE 估算 + 每日菜单（克数与热量）。aespa 风格主题。",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

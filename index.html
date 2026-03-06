@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>减脂系统 · 每日饮食计划</title>
+    <meta name="theme-color" content="#1a0a2e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="减脂系统" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=3" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header__badge">本地使用 · 无需登录</div>
+        <h1 class="header__title">减脂系统</h1>
+        <p class="header__subtitle">输入身高体重等信息，生成专属每日饮食计划与热量建议</p>
+        <p class="header__credit">Theme inspired by aespa's cyberpunk aesthetic</p>
+      </header>
+
+      <main class="main">
+        <section class="card card--form">
+          <h2 class="card__title">
+            <span class="card__title-icon">📋</span>
+            填写信息
+          </h2>
+
+          <form id="profileForm" class="form">
+            <div class="grid">
+              <label class="field">
+                <span class="field__label">身高（cm）</span>
+                <input
+                  class="field__input"
+                  name="heightCm"
+                  type="number"
+                  min="120"
+                  max="230"
+                  step="0.1"
+                  placeholder="如 175"
+                  required
+                />
+              </label>
+              <label class="field">
+                <span class="field__label">体重（kg）</span>
+                <input
+                  class="field__input"
+                  name="weightKg"
+                  type="number"
+                  min="30"
+                  max="250"
+                  step="0.1"
+                  placeholder="如 75"
+                  required
+                />
+              </label>
+              <label class="field">
+                <span class="field__label">性别</span>
+                <select class="field__input" name="sex" required>
+                  <option value="male">男</option>
+                  <option value="female">女</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">年龄（选填）</span>
+                <input
+                  class="field__input"
+                  name="age"
+                  type="number"
+                  min="13"
+                  max="90"
+                  step="1"
+                  placeholder="如 28"
+                />
+                <span class="field__hint">不填也可生成，热量估算会偏保守</span>
+              </label>
+              <label class="field">
+                <span class="field__label">活动水平（选填）</span>
+                <select class="field__input" name="activityLevel">
+                  <option value="">请选择</option>
+                  <option value="sedentary">久坐</option>
+                  <option value="light">轻度活动</option>
+                  <option value="moderate">中度活动</option>
+                  <option value="active">较高活动</option>
+                  <option value="very_active">很高活动</option>
+                </select>
+                <span class="field__hint">用于更准确的热量估算</span>
+              </label>
+              <label class="field">
+                <span class="field__label">BMI 标准</span>
+                <select class="field__input" name="bmiStandard">
+                  <option value="cn" selected>中国标准</option>
+                  <option value="who">WHO 标准</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="checkbox">
+              <input name="nutAllergy" type="checkbox" checked />
+              <span class="checkbox__box"></span>
+              <span class="checkbox__text">坚果/花生过敏（菜单中不包含相关食物）</span>
+            </label>
+
+            <div id="formErrors" class="errors" aria-live="polite"></div>
+
+            <div class="actions">
+              <button class="btn btn--primary" type="submit">
+                <span class="btn__text">生成今日菜单</span>
+              </button>
+              <button class="btn btn--secondary" id="btnShuffle" type="button" disabled>换一份</button>
+              <button class="btn btn--secondary" id="btnCopy" type="button" disabled>复制</button>
+              <button class="btn btn--secondary" id="btnExport" type="button" disabled>导出 JSON</button>
+            </div>
+
+            <p class="disclaimer">本工具仅供一般性饮食参考，不替代医疗建议。孕妇、未成年人及有慢性病者请咨询医生或营养师。</p>
+          </form>
+        </section>
+
+        <section id="resultCard" class="card card--result card--hidden">
+          <h2 class="card__title">
+            <span class="card__title-icon">📊</span>
+            你的计划
+          </h2>
+          <div id="resultSummary" class="summary"></div>
+          <div id="planView" class="plan"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>本地运行：<code>python -m http.server 5173</code>，浏览器打开 <code>http://localhost:5173</code></p>
+      </footer>
+    </div>
+
+    <script type="module" src="./src/app.js?v=3"></script>
+  </body>
+</html>
