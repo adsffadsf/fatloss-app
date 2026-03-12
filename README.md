@@ -1,6 +1,25 @@
 # 减脂系统（本地网页，无登录）
 
-## 运行
+## 直接用（无需安装）
+
+若仓库已开启 **GitHub Pages**，任何人用浏览器打开下面链接即可使用，无需安装、无需登录：
+
+- **在线地址**：<https://adsffadsf.github.io/fatloss-app/>
+
+手机也可用：用浏览器打开上述链接，iOS 在 Safari 里可「分享 → 添加到主屏幕」当 App 用。
+
+### 如何让非技术人员也能用（开启 GitHub Pages）
+
+1. 打开仓库：<https://github.com/adsffadsf/fatloss-app>
+2. 点击 **Settings**（设置）→ 左侧 **Pages**
+3. 在 **Source** 里选 **Deploy from a branch**
+4. **Branch** 选 `main`，文件夹选 `/ (root)`，点 **Save**
+5. 等一两分钟，页面会显示：*Your site is live at https://adsffadsf.github.io/fatloss-app/*  
+   把这个链接发给别人即可，对方用浏览器打开就能用，无需任何安装。
+
+---
+
+## 运行（开发者本地）
 
 在项目根目录下执行：
 
